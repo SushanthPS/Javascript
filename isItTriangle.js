@@ -1,42 +1,34 @@
-function arrayProduct(items) {
-    var prod = 1;
-    for (var i = 0; i < items.length; i++)
-        prod *= items[i];
+function createTriangle(items) {
+    var s1 = items[0];
+    var s2 = items[1];
+    var s3 = items[2];
 
-    return prod;
+    if (s1 + s2 > s3 && s1 + s3 > s2 && s3 + s2 > s1)
+        console.log("Yes");
+    else
+        console.log("No");
+
+
 }
 
-function arrayProdDivide(items, product) {
-    var answer = [];
-    for (var i = 0; i < items.length; i++)
-        answer.push(product / items[i]);
-
-    return answer;
-}
-
-function printAnswer(items) {
-    var result = items.join(" ");
-    console.log(result);
-}
 
 
 function runProgram(input) {
     var newInput = input.split("\n");
     var t = Number(newInput[0]);
     for (var i = 1; i <= t; i++) {
-        var arr = newInput[i * 2].split(" ").map(Number);
-        var product = arrayProduct(arr);
-        var arr2 = arrayProdDivide(arr, product);
-        printAnswer(arr2);
+        var arr = newInput[i].split(" ").map(Number);
+        createTriangle(arr);
     }
+
 
 }
 if (process.env.USERNAME === "getsu") {
-    runProgram(`2
-5
-1 2 3 4 5
-3
-3 2 7`);
+    runProgram(`4
+4 5 13
+7 1 8
+2 5 4
+2 2 2`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
